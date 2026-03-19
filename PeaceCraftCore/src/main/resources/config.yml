@@ -1,0 +1,13 @@
+plugin:
+  debug: false
+  language: "ru"
+  prefix: "&6PeaceCraft &8» &f"
+
+autosave:
+  enabled: true
+  interval-seconds: 300
+
+starter:
+  give-log-pose-on-first-join: true
+  island-id: "starter_island"
+

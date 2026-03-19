@@ -1,0 +1,19 @@
+prefix: "&6PeaceCraft &8» &f"
+
+startup:
+  loading-config: "Загрузка config.yml..."
+  loading-messages: "Загрузка файла сообщений..."
+  loading-islands: "Загрузка islands.yml..."
+  plugin-enabled: "PeaceCraftCore успешно запущен."
+  plugin-disabled: "PeaceCraftCore остановлен."
+
+errors:
+  missing-message: "Отсутствует сообщение: %path%"
+  missing-resource: "В jar не найден ресурс: %file%"
+  failed-create-data-folder: "Не удалось создать папку данных плагина."
+
+general:
+  no-permission: "%prefix%У тебя нет прав."
+  player-only: "%prefix%Эту команду может использовать только игрок."
+  reload-success: "%prefix%Конфиги успешно перезагружены."
+

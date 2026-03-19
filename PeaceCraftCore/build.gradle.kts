@@ -25,3 +25,4 @@ tasks.jar {
         attributes["paperweight-mappings-namespace"] = "mojang"
     }
 }
+

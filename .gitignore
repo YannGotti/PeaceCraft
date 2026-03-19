@@ -31,3 +31,5 @@ PeaceCraftCore/.gradle/
 PeaceCraftCore/build/
 PeaceCraftCore/out/
 PeaceCraftCore/**/*.class
+
+PeaceCraftCore/node_modules/
