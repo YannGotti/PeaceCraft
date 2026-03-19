@@ -1,0 +1,33 @@
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.iml
+
+# Logs / temp
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+
+# Python
+__pycache__/
+*.pyc
+
+# Backups
+backups/
+backup/
+
+# Local generated helpers
+file_tree.txt
+
+# Entire local server is not versioned
+server/
+
+# Gradle / Java
+PeaceCraftCore/.gradle/
+PeaceCraftCore/build/
+PeaceCraftCore/out/
+PeaceCraftCore/**/*.class

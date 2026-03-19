@@ -1,0 +1,7 @@
+name: PeaceCraftCore
+version: 0.1.0
+main: ru.peacecraft.core.PeaceCraftPlugin
+description: Core plugin for the PeaceCraft server
+author: mironoouv
+website: https://peacecraft.ru
+api-version: '1.21.11'
