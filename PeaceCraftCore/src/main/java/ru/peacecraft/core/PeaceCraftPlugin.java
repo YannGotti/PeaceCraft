@@ -1,11 +1,17 @@
 package ru.peacecraft.core;
 
+import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.java.JavaPlugin;
+import ru.peacecraft.core.commands.admin.IslandAdminCommand;
 import ru.peacecraft.core.config.ConfigManager;
 import ru.peacecraft.core.islands.config.IslandsConfig;
+import ru.peacecraft.core.islands.listener.IslandDiscoveryListener;
 import ru.peacecraft.core.islands.model.IslandData;
 import ru.peacecraft.core.islands.service.IslandRegistry;
 import ru.peacecraft.core.islands.service.IslandService;
+import ru.peacecraft.core.logpose.commands.LogPoseCommand;
+import ru.peacecraft.core.logpose.listener.LogPoseInteractionListener;
+import ru.peacecraft.core.logpose.service.LogPoseService;
 import ru.peacecraft.core.message.MessageService;
 import ru.peacecraft.core.persistence.repository.PlayerDataRepository;
 import ru.peacecraft.core.persistence.service.PlayerDataService;
@@ -19,6 +25,9 @@ public final class PeaceCraftPlugin extends JavaPlugin {
     private IslandService islandService;
     private PlayerDataRepository playerDataRepository;
     private PlayerDataService playerDataService;
+    private IslandDiscoveryListener islandDiscoveryListener;
+    private LogPoseService logPoseService;
+    private LogPoseInteractionListener logPoseInteractionListener;
 
     @Override
     public void onEnable() {
@@ -46,6 +55,13 @@ public final class PeaceCraftPlugin extends JavaPlugin {
         this.playerDataService = new PlayerDataService(this, this.playerDataRepository, this.configManager.getAutosaveIntervalSeconds());
         this.playerDataService.initialize();
 
+        getLogger().info("Initializing Log Pose system...");
+        this.logPoseService = new LogPoseService(this);
+        this.logPoseInteractionListener = new LogPoseInteractionListener(this, this.logPoseService);
+
+        registerCommands();
+        registerListeners();
+
         getLogger().info(messageService.getPlain("startup.plugin-enabled"));
     }
 
@@ -67,6 +83,34 @@ public final class PeaceCraftPlugin extends JavaPlugin {
         }
     }
 
+    private void registerCommands() {
+        PluginCommand pcCommand = getCommand("pc");
+        if (pcCommand != null) {
+            IslandAdminCommand islandCommand = new IslandAdminCommand(this);
+            pcCommand.setExecutor(islandCommand);
+            pcCommand.setTabCompleter(islandCommand);
+        }
+
+        PluginCommand logPoseCommand = getCommand("logpose");
+        if (logPoseCommand != null) {
+            LogPoseCommand logPoseCmd = new LogPoseCommand(this, this.logPoseService);
+            logPoseCommand.setExecutor(logPoseCmd);
+            logPoseCommand.setTabCompleter(logPoseCmd);
+        }
+    }
+
+    private void registerListeners() {
+        // Island Discovery Listener
+        this.islandDiscoveryListener = new IslandDiscoveryListener(this);
+        getServer().getPluginManager().registerEvents(this.islandDiscoveryListener, this);
+        getLogger().info("Registered IslandDiscoveryListener");
+
+        // LogPose Interaction Listener
+        this.logPoseInteractionListener = new LogPoseInteractionListener(this, this.logPoseService);
+        getServer().getPluginManager().registerEvents(this.logPoseInteractionListener, this);
+        getLogger().info("Registered LogPoseInteractionListener");
+    }
+
     private void logLoadedIslands() {
         getLogger().info(() -> "Loaded " + islandService.getLoadedIslandCount() + " islands.");
         for (IslandData islandData : islandService.getAllIslands()) {
@@ -79,6 +123,7 @@ public final class PeaceCraftPlugin extends JavaPlugin {
         getLogger().info(() -> "Starter island: " + starterIsland.getId() + " (" + starterIsland.getDisplayName() + ")");
     }
 
+    // Getters
     public ConfigManager getMainConfigManager() {
         return configManager;
     }
@@ -105,5 +150,9 @@ public final class PeaceCraftPlugin extends JavaPlugin {
 
     public PlayerDataService getPlayerDataService() {
         return playerDataService;
+    }
+
+    public LogPoseService getLogPoseService() {
+        return logPoseService;
     }
 }

@@ -4,6 +4,7 @@ startup:
   loading-messages: "Загрузка файла сообщений..."
   loading-islands: "Загрузка islands.yml..."
   loading-persistence: "Инициализация системы сохранений..."
+  loading-logpose: "Инициализация системы Log Pose..."
   plugin-enabled: "PeaceCraftCore успешно запущен."
   plugin-disabled: "PeaceCraftCore остановлен."
 errors:
@@ -18,3 +19,9 @@ general:
   reload-success: "%prefix%Конфиги успешно перезагружены."
   data-loaded: "%prefix%Твои данные загружены."
   data-saved: "%prefix%Твои данные сохранены."
+logpose:
+  received: "%prefix%Вы получили Log Pose!"
+  already-have: "%prefix%У вас уже есть Log Pose!"
+  target-set: "%prefix%Цель установлена: %target%"
+  target-reset: "%prefix%Цель сброшена."
+  no-target: "%prefix%У вас нет активной цели."

@@ -4,4 +4,26 @@ main: ru.peacecraft.core.PeaceCraftPlugin
 description: Core plugin for the PeaceCraft server
 author: mironoouv
 website: https://peacecraft.ru
-api-version: '1.21.11'
+api-version: "1.21.11"
+
+commands:
+  pc:
+    description: PeaceCraft admin command
+    usage: /pc <subcommand>
+    permission: peacecraft.admin.use
+  logpose:
+    description: Log Pose navigation command
+    usage: /logpose [set|reset|info]
+    permission: peacecraft.player.logpose
+    aliases: [lp, compass]
+
+permissions:
+  peacecraft.admin.use:
+    description: Allows using PeaceCraft admin commands
+    default: op
+  peacecraft.admin.island.manage:
+    description: Allows managing island data
+    default: op
+  peacecraft.player.logpose:
+    description: Allows using Log Pose commands
+    default: true

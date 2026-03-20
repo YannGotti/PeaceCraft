@@ -1,5 +1,5 @@
 plugin:
-  debug: false
+  debug: true
   language: "ru"
   prefix: "&6PeaceCraft &8» &f"
 
@@ -10,4 +10,3 @@ autosave:
 starter:
   give-log-pose-on-first-join: true
   island-id: "starter_island"
-
