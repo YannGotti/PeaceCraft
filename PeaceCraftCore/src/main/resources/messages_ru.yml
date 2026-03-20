@@ -5,6 +5,7 @@ startup:
   loading-islands: "Загрузка islands.yml..."
   loading-persistence: "Инициализация системы сохранений..."
   loading-logpose: "Инициализация системы Log Pose..."
+  loading-travel: "Инициализация системы путешествий..."
   plugin-enabled: "PeaceCraftCore успешно запущен."
   plugin-disabled: "PeaceCraftCore остановлен."
 errors:
@@ -25,3 +26,11 @@ logpose:
   target-set: "%prefix%Цель установлена: %target%"
   target-reset: "%prefix%Цель сброшена."
   no-target: "%prefix%У вас нет активной цели."
+travel:
+  departure: "%prefix%Отплытие на §e%island%§7..."
+  arrival: "%prefix%Вы прибыли на §e%island%§a!"
+  cooldown: "%prefix%Путешествие доступно через %seconds% сек."
+  not-unlocked: "%prefix%Остров ещё не открыт! %requirement%"
+  not-found: "%prefix%Остров не найден: %island%"
+  already-here: "%prefix%Вы уже находитесь на этом острове"
+  fast-travel: "%prefix%Быстрое путешествие на §e%island%§a!"

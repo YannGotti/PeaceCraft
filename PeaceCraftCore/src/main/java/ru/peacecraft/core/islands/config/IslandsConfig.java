@@ -80,7 +80,7 @@ public final class IslandsConfig {
                 requireString(basePath + ".display-name"),
                 requireString(basePath + ".world"),
                 requireString(basePath + ".region-id"),
-                requireString(basePath + ".currency-id"),
+                islandsConfig.getString(basePath + ".currency-id", "scrap"),
                 requireString(basePath + ".unlock-requirement"),
                 requireCoordinate(basePath + ".center"),
                 requireCoordinate(basePath + ".spawn"),
@@ -94,11 +94,9 @@ public final class IslandsConfig {
 
     private String requireString(String path) {
         String value = islandsConfig.getString(path);
-
         if (value == null || value.isBlank()) {
             throw new IllegalStateException("Missing or blank string in islands.yml: " + path);
         }
-
         return value;
     }
 

@@ -2,6 +2,7 @@ package ru.peacecraft.core.commands;
 
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.Nullable;
 import ru.peacecraft.core.PeaceCraftPlugin;
 import ru.peacecraft.core.message.MessageService;
 
@@ -16,7 +17,7 @@ public abstract class BaseCommand {
     }
 
     protected boolean hasPermission(CommandSender sender, String permission) {
-        if (permission == null || permission.isEmpty()) {
+        if (permission == null || permission.isBlank()) {
             return true;
         }
         return sender.hasPermission(permission);
@@ -26,7 +27,7 @@ public abstract class BaseCommand {
         return sender instanceof Player;
     }
 
-    protected Player requirePlayer(CommandSender sender) {
+    protected @Nullable Player requirePlayer(CommandSender sender) {
         if (!(sender instanceof Player player)) {
             sender.sendMessage(messageService.get("general.player-only"));
             return null;

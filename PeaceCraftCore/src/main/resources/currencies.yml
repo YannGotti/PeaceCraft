@@ -1,0 +1,37 @@
+currencies:
+  scrap:
+    id: "scrap"
+    name: "Scrap"
+    display-name: "Металлолом"
+    symbol: "🔩"
+    decimal-places: 0
+    description: "Основная валюта Стартового острова"
+    islands:
+      - "starter_island"
+  clown_nose:
+    id: "clown_nose"
+    name: "Clown Nose"
+    display-name: "Нос Клоуна"
+    symbol: "🤡"
+    decimal-places: 0
+    description: "Валюта Оранжевого Города"
+    islands:
+      - "orange_island"
+  mandarins:
+    id: "mandarins"
+    name: "Mandarins"
+    display-name: "Мандарины"
+    symbol: "🍊"
+    decimal-places: 0
+    description: "Валюта Острова Мандаринов"
+    islands:
+      - "fuchsia_island"
+  beli:
+    id: "beli"
+    name: "Beli"
+    display-name: "Бели"
+    symbol: "฿"
+    decimal-places: 0
+    description: "Основная мировая валюта"
+    islands:
+      - "loguetown_island"

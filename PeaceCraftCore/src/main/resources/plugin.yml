@@ -11,19 +11,54 @@ commands:
     description: PeaceCraft admin command
     usage: /pc <subcommand>
     permission: peacecraft.admin.use
+
   logpose:
     description: Log Pose navigation command
     usage: /logpose [set|reset|info]
     permission: peacecraft.player.logpose
     aliases: [lp, compass]
 
+  travel:
+    description: Travel to island
+    usage: /travel <island>
+    permission: peacecraft.player.travel
+
+  fasttravel:
+    description: Fast travel to island
+    usage: /fasttravel <island>
+    permission: peacecraft.player.travel
+
+  shop:
+    description: Open shop menu
+    usage: /shop [sell|balance]
+    permission: peacecraft.player.shop
+
+  currency:
+    description: Currency commands
+    usage: /currency <balance>
+    permission: peacecraft.player.currency
+
 permissions:
   peacecraft.admin.use:
     description: Allows using PeaceCraft admin commands
     default: op
+
   peacecraft.admin.island.manage:
     description: Allows managing island data
     default: op
+
   peacecraft.player.logpose:
     description: Allows using Log Pose commands
+    default: true
+
+  peacecraft.player.travel:
+    description: Allows using travel commands
+    default: true
+
+  peacecraft.player.shop:
+    description: Allows using shop
+    default: true
+
+  peacecraft.player.currency:
+    description: Allows using currency commands
     default: true

@@ -12,6 +12,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 import ru.peacecraft.core.PeaceCraftPlugin;
 import ru.peacecraft.core.islands.model.IslandData;
+import ru.peacecraft.core.logpose.model.LogPoseSetResult;
 import ru.peacecraft.core.logpose.model.LogPoseTarget;
 import ru.peacecraft.core.logpose.model.LogPoseTarget.TargetType;
 import ru.peacecraft.core.persistence.model.PlayerData;
@@ -164,5 +165,30 @@ public final class LogPoseService {
 
     public PeaceCraftPlugin getPlugin() {
         return plugin;
+    }
+
+    public LogPoseSetResult setTargetByIslandId(Player player, String islandId) {
+        IslandData island = plugin.getIslandService().getIslandById(islandId);
+        if (island == null) {
+            return LogPoseSetResult.fail("§cОстров не найден: " + islandId);
+        }
+
+        PlayerData playerData = plugin.getPlayerDataService().getPlayerData(player);
+        if (!playerData.isIslandUnlocked(islandId) && !island.getId().equals(plugin.getMainConfigManager().getStarterIslandId())) {
+            return LogPoseSetResult.fail("§cЭтот остров ещё не открыт.");
+        }
+
+        LogPoseTarget target = LogPoseTarget.fromIsland(island, true);
+        setTargetForPlayer(player, target);
+        plugin.getPlayerDataService().markDirty(player);
+        plugin.getPlayerDataService().save(player);
+
+        return LogPoseSetResult.ok("§aЦель Log Pose установлена: §6" + island.getDisplayName());
+    }
+
+    public void resetTarget(Player player) {
+        PlayerData playerData = plugin.getPlayerDataService().getPlayerData(player);
+        playerData.setActiveLogPoseTarget(null);
+        plugin.getPlayerDataService().save(player);
     }
 }

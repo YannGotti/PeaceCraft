@@ -10,3 +10,25 @@ autosave:
 starter:
   give-log-pose-on-first-join: true
   island-id: "starter_island"
+
+currencies:
+  scrap:
+    name: "Scrap"
+    display-name: "Металлолом"
+    symbol: "🔩"
+    decimal-places: 0
+  clown_nose:
+    name: "Clown Nose"
+    display-name: "Нос Клоуна"
+    symbol: "🤡"
+    decimal-places: 0
+  mandarins:
+    name: "Mandarins"
+    display-name: "Мандарины"
+    symbol: "🍊"
+    decimal-places: 0
+  beli:
+    name: "Beli"
+    display-name: "Бели"
+    symbol: "฿"
+    decimal-places: 0

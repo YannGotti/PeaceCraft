@@ -3,51 +3,40 @@ islands:
     display-name: "Start Town"
     world: "world"
     region-id: "starter_island"
-    currency-id: "scrap"
     unlock-requirement: "none"
-
     center:
       x: 0.0
       y: 80.0
       z: 0.0
-
     spawn:
-      x: 0.0
-      y: 65.0
-      z: 0.0
-
+      x: 15.0
+      y: 71.0
+      z: -100.0
     port:
       x: 10.0
       y: 63.0
       z: 10.0
-
     compass-target:
       x: 10.0
       y: 63.0
       z: 10.0
-
   orange_island:
     display-name: "Orange Town"
     world: "world"
     region-id: "orange_island"
-    currency-id: "clown_nose"
     unlock-requirement: "starter_boss_complete"
-
     center:
       x: 1000.0
       y: 80.0
       z: 500.0
-
     spawn:
       x: 1010.0
       y: 65.0
       z: 490.0
-
     port:
       x: 995.0
       y: 63.0
       z: 505.0
-
     compass-target:
       x: 995.0
       y: 63.0

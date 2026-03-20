@@ -57,23 +57,13 @@ public final class LogPoseCommand extends BaseCommand implements CommandExecutor
             return true;
         }
 
-        String islandId = args[1];
-        IslandData island = plugin.getIslandService().getIslandById(islandId);
-
-        if (island == null) {
-            player.sendMessage("§cОстров не найден: " + islandId);
-            return true;
-        }
-
-        LogPoseTarget target = LogPoseTarget.fromIsland(island, true);
-        logPoseService.setTargetForPlayer(player, target);
-        player.sendMessage("§aЦель Log Pose установлена: §6" + island.getDisplayName());
-
+        var result = logPoseService.setTargetByIslandId(player, args[1]);
+        player.sendMessage(result.message());
         return true;
     }
 
     private boolean handleReset(Player player) {
-        plugin.getPlayerDataService().getPlayerData(player.getUniqueId()).setActiveLogPoseTarget(null);
+        logPoseService.resetTarget(player);
         player.sendMessage("§aЦель Log Pose сброшена.");
         return true;
     }
